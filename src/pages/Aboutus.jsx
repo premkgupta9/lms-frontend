@@ -19,10 +19,14 @@ return (
                        we are providing the platform for the aspiring teachers and students to share their skills, creativity and knowledge to each other to empower and contribute in the growth and wellness of mankind. 
                     </p>
                 </section>
+
+                 {/* our moto image section */}
                     <div className="w-1/2">
                     <img src={aboutMainImage} className="drop-shadow-2xl" alt="about main image" />
                     </div>
             </div>
+
+             {/* top personalities quotes section */}
             <div className="carousel w-1/2 my-10 mx-auto">
                     <div id="slide1" className="carousel-item relative w-full">
                         <div className='flex flex-col items-center justify-center gap-4 px-[15%]'>
@@ -71,7 +75,7 @@ return (
                 </div>
         </div>
     </HomeLayout>
-)
-}
+);
+};
 
 export default Aboutus;
