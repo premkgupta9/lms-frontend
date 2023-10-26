@@ -3,6 +3,7 @@ import { FiMenu } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/slices/authSlice";
 
 function HomeLayout({ children }) {
 
