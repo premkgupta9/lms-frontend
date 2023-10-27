@@ -47,7 +47,7 @@ function HomeLayout({ children }) {
     return (
        <div className="min-h-[90vh]">
         {/* adding the daisy ui drawer */}
-            <div className="drawer absolute left-0 z-50 w-fit">
+            <div className="drawer absolute left-0 z-50 w-full">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />      
                 <div className="drawer-content">
                     <label htmlFor="my-drawer" className="cursor-pointer relative"> 
@@ -76,6 +76,11 @@ function HomeLayout({ children }) {
                         </li>
                     )} 
 
+                    {isLoggedIn && role === "ADMIN" && (
+                        <li>
+                            <Link to={'/course/create'}>Create Course</Link>
+                        </li>
+                    )} 
                 <li>
                     <Link to='/about'> About us </Link>
                 </li> 
@@ -111,7 +116,7 @@ function HomeLayout({ children }) {
                                     <Link to={'/user/profile'}>Profile</Link>
                                 </button>
 
-                                <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-4">
+                                <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
                                     <Link onClick={onLogout}>Logout</Link>
                                 </button>
                             </div>
