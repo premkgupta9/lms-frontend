@@ -4,7 +4,7 @@ function Notfound() {
     const navigate = useNavigate();
     
     return(
-        <div className=" h-screen w-full flex flex-col justify-center items-center ">
+        <div className=" h-screen w-full flex flex-col justify-center items-center bg-[#1A2238] ">
         <h1 className="text-9xl font-extrabold text-black tracking-widest">404
             </h1> 
         <div className="bg-white  absolute px-2 text-sm rounded rotate-12 absolute">

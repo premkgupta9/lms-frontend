@@ -3,6 +3,7 @@ import HomeLayout from "../../layouts/HomeLayout";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { getUserData } from "../../redux/slices/authSlice";
+import { cancelCourseBundle } from "../../redux/slices/razorPaySlice";
 
 function Profile() {
 
@@ -11,6 +12,7 @@ function Profile() {
 
     const userData = useSelector(state => state?.auth?.data);
 
+    // function to handle the cancel subscription of course
     async function handleCancellation() {
         toast("Initiating cancellation");
         await dispatch(cancelCourseBundle());
@@ -18,6 +20,11 @@ function Profile() {
         toast.success("Cancellation complete");
         navigate("/");
     }
+
+    //  useEffect(() => {
+    // getting user details
+    // dispatch(getUserData());
+// }, []);
 
     return(
         <HomeLayout>
@@ -38,6 +45,7 @@ function Profile() {
                     <p>Subscription:  </p> <p> {userData?.subscription?.status === "active" ? "Active" : "Inactive"}</p>
                 </div>
 
+                 {/* button to change the password */}
                 <div className="flex items-center justify-between gap-2">
                     <Link 
                         to="/changepassword"
@@ -47,8 +55,13 @@ function Profile() {
                             Change password
                         </button>
                     </Link>
+                    
                     <Link 
-                        to="/user/editprofile"
+                        to=
+                        // userData?.email === "test@gmail.com"
+                //   ? "/denied"
+                //   : 
+                        "/user/editprofile"
                         className="w-1/2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center"
                     >
                         <button>

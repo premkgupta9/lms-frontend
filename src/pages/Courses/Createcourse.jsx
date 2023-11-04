@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
 import HomeLayout from "../../layouts/HomeLayout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { createNewCourse } from "../../redux/slices/courseSlice";
+import toast from "react-hot-toast";
 
 function CreateCourse() {
 
@@ -48,6 +50,10 @@ function CreateCourse() {
             toast.error("All field are mandatory");
             return;
         }
+        // const data = { ...userInput, id: initialCourseData._id };
+      // calling the api
+    //   res = await dispatch(updateCourse(data));
+    
         const response = await dispatch(createNewCourse(userInput));
         console.log(response);
         if(response?.payload?.success) {

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getUserData, updateProfile } from "../../redux/slices/authSlice";
 import { BsPersonCircle } from "react-icons/bs";
+import toast from "react-hot-toast";
 
 function EditProfile() {
 
@@ -17,9 +18,12 @@ function EditProfile() {
         userId: useSelector((state) => state?.auth?.data?._id) 
     });
 
+    // function to handle the image upload
     function handleImageUpload(e) {
         e.preventDefault();
+            // getting the image
         const uploadedImage = e.target.files[0]; // this is the actual file
+         // if image exists then getting the url link of it
         if(uploadedImage) {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(uploadedImage);
@@ -41,21 +45,26 @@ function EditProfile() {
         });
     }
 
+    // function to handle the form submission
     async function onFormSubmit(e) {
         e.preventDefault();
+        // checking for the empty field
         if(!data.fullName || !data.avatar) {
             toast.error("All fields are mandatory");
             return;
         }
+        // checking the length of name
         if(data.fullName.length < 5) {
             toast.error("Name cannot be less than 5 characters");
             return;
         }
-
+        // creating the form data from the existing data
         const formData = new FormData();
         formData.append("fullName", data.fullName);
         formData.append("avatar", data.avatar);
+        // dispatching the api call using the thunk
         await dispatch(updateProfile([data.userId, formData]));
+        // fetching the data to update
         await dispatch(getUserData());
 
         navigate("/user/profile");
@@ -68,12 +77,13 @@ function EditProfile() {
             <div className="flex items-center justify-center h-[90vh]">
                 <form 
                     onSubmit={onFormSubmit}
-                    className="flex flex-col justify-center gap-5 rounded-lg p-4 text-white w-80 min-h-[26rem] shadow-[0_0_10px_black]"
+                    className="flex flex-col justify-center gap-5 rounded-lg p-4 text-black w-80 min-h-[26rem] shadow-[0_0_10px_black]"
                 >
                     <h1 className="text-center text-2xl font-semibold">
                         Edit Profile
                     </h1>
 
+                    {/* input for image file */}
                     <label className="cursor-pointer" htmlFor="image_uploads">
                         {
                             data.previewImage ? (

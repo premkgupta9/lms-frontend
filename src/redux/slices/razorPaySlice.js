@@ -13,6 +13,7 @@ const initialState = {
     monthlySalesRecord: []
 };
 
+// function to get the api key
 export const getRazorPayId = createAsyncThunk("/razorpay/getId", async () => {
     try {
         const response = await axiosInstance.get("/payments/razorpay-key");
@@ -22,6 +23,7 @@ export const getRazorPayId = createAsyncThunk("/razorpay/getId", async () => {
     }
 });
 
+// function to purchase the course bundle
 export const purchaseCourseBundle = createAsyncThunk("/purchasecourse", async () => {
     try {
         const response = await axiosInstance.post("/payments/subscribe");
@@ -30,6 +32,8 @@ export const purchaseCourseBundle = createAsyncThunk("/purchasecourse", async ()
         toast.error(error?.response?.data?.message);
     }
 });
+
+// function to verify the user payment
 
 export const verifyUserPayment = createAsyncThunk("/payments/verify", async (data) => {
     try {
@@ -45,6 +49,7 @@ export const verifyUserPayment = createAsyncThunk("/payments/verify", async (dat
     }
 });
 
+// function to get all the payment record
 export const getPaymentRecord = createAsyncThunk("/payment/record", async () => {
     try {
         const response = axiosInstance.get("/payments?count=100");
@@ -61,6 +66,7 @@ export const getPaymentRecord = createAsyncThunk("/payment/record", async () => 
     }
 });
 
+// function to cancel the course bundle subscription
 export const cancelCourseBundle = createAsyncThunk("/payment/cancel", async () => {
     try {
         const response = axiosInstance.post("/payments/unsubscribe");

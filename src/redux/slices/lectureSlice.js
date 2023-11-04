@@ -6,6 +6,7 @@ const initialState = {
     lectures: []
 }
 
+// function to get all the lectures
 export const getCourseLecture = createAsyncThunk("/course/lecture/get", async (cid) => {
     try {
         const response = axiosInstance.get(`/courses/${cid}`);
@@ -20,6 +21,7 @@ export const getCourseLecture = createAsyncThunk("/course/lecture/get", async (c
     }
 });
 
+// function to delete the lecture from the course
 export const deleteCourseLecture = createAsyncThunk("/course/lecture/delete", async (data) => {
     try {
         const response = axiosInstance.delete(`/courses?courseId=${data.courseId}&lectureId=${data.lectureId}`);
@@ -34,8 +36,7 @@ export const deleteCourseLecture = createAsyncThunk("/course/lecture/delete", as
     }
 });
 
-
-
+// function to add new lecture to the course
 export const addCourseLecture = createAsyncThunk("/course/lecture/add", async (data) => {
     try {
 

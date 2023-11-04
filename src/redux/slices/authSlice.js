@@ -4,9 +4,9 @@ import axiosInstance from "../../config/axiosInstance";
 
 const initialState = {
     isLoggedIn: localStorage.getItem("isLoggedIn") || false,
+    data:(localStorage.getItem("data")) || {},  
     role: localStorage.getItem("role") || "",
-    data: JSON.parse(localStorage.getItem("data")) ||{},
-}
+}  
 
 // function to handle signup
 export const createAccount = createAsyncThunk('/auth/signup', async (data) => {
@@ -29,6 +29,7 @@ export const createAccount = createAsyncThunk('/auth/signup', async (data) => {
     }
 });
 
+// function to update user profile
 export const updateProfile = createAsyncThunk("/auth/updateProfile", async (data) => {
     try {
         const response = axiosInstance.put(`user/update/${data[0]}`, data[1]);
@@ -47,6 +48,7 @@ export const updateProfile = createAsyncThunk("/auth/updateProfile", async (data
     }
 })
 
+// function to fetch user data
 export const getUserData = createAsyncThunk("/auth/getData", async () => {
     try {
         const response = axiosInstance.get("/user/me");
@@ -56,6 +58,75 @@ export const getUserData = createAsyncThunk("/auth/getData", async () => {
     }
 })
 
+// // function to change user password
+// export const changePassword = createAsyncThunk(
+//     "/auth/changePassword",
+//     async (userPassword) => {
+//       try {
+//         let res = axiosInstance.post("/user/change-password", userPassword);
+  
+//         await toast.promise(res, {
+//           loading: "Loading...",
+//           success: (data) => {
+//             return data?.data?.message;
+//           },
+//           error: "Failed to change password",
+//         });
+  
+//         // getting response resolved here
+//         res = await res;
+//         return res.data;
+//       } catch (error) {
+//         toast.error(error?.response?.data?.message);
+//       }
+//     }
+//   );
+
+//   // function to handle forget password
+// export const forgetPassword = createAsyncThunk(
+//     "auth/forgetPassword",
+//     async (email) => {
+//       try {
+//         let res = axiosInstance.post("/user/reset", { email });
+  
+//         await toast.promise(res, {
+//           loading: "Loading...",
+//           success: (data) => {
+//             return data?.data?.message;
+//           },
+//           error: "Failed to send verification email",
+//         });
+  
+//         // getting response resolved here
+//         res = await res;
+//         return res.data;
+//       } catch (error) {
+//         toast.error(error?.response?.data?.message);
+//       }
+//     }
+//   );
+
+//   // function to reset the password
+// export const resetPassword = createAsyncThunk("/user/reset", async (data) => {
+//     try {
+//       let res = axiosInstance.post(`/user/reset/${data.resetToken}`, {
+//         password: data.password,
+//       });
+  
+//       toast.promise(res, {
+//         loading: "Resetting...",
+//         success: (data) => {
+//           return data?.data?.message;
+//         },
+//         error: "Failed to reset password",
+//       });
+//       // getting response resolved here
+//       res = await res;
+//       return res.data;
+//     } catch (error) {
+//       toast.error(error?.response?.data?.message);
+//     }
+//   });
 
 // function to handle login
 export const login = createAsyncThunk('/auth/signin', async (data) => {

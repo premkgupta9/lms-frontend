@@ -22,7 +22,7 @@ function Home( ) {
                         </button>
                     </Link>
 
-                    <Link to={'/contact'}>
+                    <Link to={'/contacts'}>
                         <button className=" border border-yellow-400 px-5 py-3 rounded-md font -semibold text-lg curser-pointer hover:bg-yellow-600 transition-all ease-in-out duration-300">
                             Contact Us
                         </button>
@@ -32,7 +32,7 @@ function Home( ) {
 
             {/* right section for image */}
             <div className="w-1/2 flex item-center justify-center">
-                <img src={homePageMainImage} alt="home-page" />
+                <img src={homePageMainImage} alt="home page" />
             </div>
         </div>
         </HomeLayout>

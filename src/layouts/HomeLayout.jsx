@@ -41,7 +41,7 @@ function HomeLayout({ children }) {
        const response = await dispatch(logout());
 
      // redirect to home page if true
-      if (response?.payload?.success)  navigate('/');
+      if (response?.payload?.data)  navigate('/');
     };
 
     return (
