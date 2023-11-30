@@ -6,7 +6,7 @@ import Footer from "../Components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux/authSlice";
 
-const Layout = ({ children }) => {
+const Layout = ({children}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

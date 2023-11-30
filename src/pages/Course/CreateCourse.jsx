@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Layout from "../../Layout/Layout";
-import { createNewCourse, updateCourse } from "../../Redux/courseSlice";
+import { createNewCourse, updateCourse } from "../../redux/courseSlice"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const CreateCourse = () => {
@@ -123,7 +123,7 @@ const CreateCourse = () => {
         {/* card for creating the new card */}
         <form
           onSubmit={handleFormSubmit}
-          className="flex flex-col justify-center gap-5 rounded-lg p-4 text-white w-[700px] h-[450px] my-10 shadow-[0_0_10px_black] relative"
+          className="flex flex-col justify-center gap-5 rounded-lg p-4 text-black w-[700px] h-[450px] my-10 shadow-[0_0_10px_black] relative"
         >
           <Link
             to={"/admin/dashboard"}

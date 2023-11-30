@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../Helper/axiosInstance";
 
+
 const initialState = {
   coursesData: [],
 };
@@ -10,6 +11,7 @@ const initialState = {
 export const getAllCourses = createAsyncThunk("/course/get", async () => {
   try {
     const res = axiosInstance.get("/courses");
+    console.log(res);
 
     toast.promise(res, {
       loading: "Loading courses data...",
